@@ -1,0 +1,78 @@
+﻿<Window x:Class="rRM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:rRM"
+        mc:Ignorable="d"
+        Icon="v9g-icon-multisize.ico"
+        Title="rRM | Route Manager" Height="450" Width="1000">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Rules">
+                <ListView x:Name="RuleView"
+                          ItemsSource="{Binding Rules}"
+                          SelectedItem="{Binding SelectedRule}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Name" Width="150" 
+                                            DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="Application" Width="300" 
+                                            DisplayMemberBinding="{Binding Application}"/>
+                            <GridViewColumn Header="Destination" Width="150" 
+                                            DisplayMemberBinding="{Binding Destination}"/>
+                            <GridViewColumn Header="Interface" Width="300" 
+                                            DisplayMemberBinding="{Binding Interface}"/>
+                        </GridView>
+                    </ListView.View>
+                    <ListView.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Copy name" x:Name="CopyInterfaceName"/>
+                        </ContextMenu>
+                    </ListView.ContextMenu>
+                </ListView>
+            </TabItem>
+            <TabItem Header="Interfaces">
+                <ListView x:Name="InterfaceView"
+                          ItemsSource="{Binding Interfaces}"
+                          SelectedItem="{Binding SelectedInteface}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Name" Width="300" 
+                                            DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="Address" Width="300" 
+                                            DisplayMemberBinding="{Binding Address}"/>
+                            <GridViewColumn Header="Metric" Width="50" 
+                                            DisplayMemberBinding="{Binding Metric}"/>
+                            <GridViewColumn Header="Index" Width="50" 
+                                            DisplayMemberBinding="{Binding Index}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Header="Routes">
+                <ListView x:Name="RoutesView">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Destination" Width="300" 
+                                            DisplayMemberBinding="{Binding Destination}"/>
+                            <GridViewColumn Header="Mask" Width="50" 
+                                            DisplayMemberBinding="{Binding Mask}"/>
+                            <GridViewColumn Header="Interface" Width="150" 
+                                            DisplayMemberBinding="{Binding Gateway}"/>
+                            <GridViewColumn Header="Gateway" Width="50" 
+                                            DisplayMemberBinding="{Binding InterfaceIndex}"/>
+                            <GridViewColumn Header="Metric" Width="50" 
+                                            DisplayMemberBinding="{Binding Metric}"/>
+                            <GridViewColumn Header="Effective metric" Width="50" 
+                                            DisplayMemberBinding="{Binding EffectiveMetric}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Header="Log">
+                
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
